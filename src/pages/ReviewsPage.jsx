@@ -86,18 +86,17 @@ const getSentimentInfo = (score) => {
   }
 };
 
-// Add mock dates to reviews
 const addDatesToReviews = (reviews) => {
-  const now = new Date();
+  const baseDate = new Date('2026-10-01T12:00:00Z');
   return reviews.map((review, index) => {
-    const daysAgo = Math.floor(Math.random() * 90); // Random date within last 90 days
-    const date = new Date(now);
+    const daysAgo = (index * 7) % 90;
+    const date = new Date(baseDate);
     date.setDate(date.getDate() - daysAgo);
     return {
       ...review,
       date: date.toISOString(),
-      replied: Math.random() > 0.6, // 40% chance of being replied
-      resolved: Math.random() > 0.7, // 30% chance of being resolved
+      replied: (index % 3) !== 0,
+      resolved: (index % 4) === 0,
     };
   });
 };

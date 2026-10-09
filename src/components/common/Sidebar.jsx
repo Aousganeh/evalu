@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Settings } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Settings, Cpu } from 'lucide-react';
 import analytic from '../../assets/analytic.svg';
 import feedback from '../../assets/feedback.svg';
 import order from '../../assets/order.svg';
@@ -61,11 +61,22 @@ const Sidebar = ({ currentPage, onNavigate, isCollapsed = false, onCollapseChang
 
       <div className="sidebar-top">
         <nav className="sidebar-nav">
+          {/* AI Pipeline & Operations (Main Demo Flow) */}
+          <div 
+            className={`nav-item ${currentPage === 'pipeline' ? 'active' : ''}`} 
+            onClick={() => onNavigate('pipeline')} 
+            style={{ marginTop: '0px', background: currentPage === 'pipeline' ? '#EFF6FF' : 'transparent', color: currentPage === 'pipeline' ? '#2563EB' : 'inherit' }}
+            title={isCollapsed ? 'AI Pipeline' : ''}
+          >
+            <Cpu size={20} color={currentPage === 'pipeline' ? '#2563EB' : '#64748b'} style={{ flexShrink: 0 }} />
+            {!isCollapsed && <span style={{ fontWeight: currentPage === 'pipeline' ? '700' : '500' }}>AI Pipeline</span>}
+          </div>
+
           {/* Analytics Section - Direct link, no submenu */}
           <div 
             className={`nav-item ${currentPage === 'overview' || currentPage === 'dashboard' ? 'active' : ''}`} 
             onClick={() => onNavigate('overview')} 
-            style={{ marginTop: '0px' }}
+            style={{ marginTop: '8px' }}
             title={isCollapsed ? 'Analytics' : ''}
           >
             <img src={analytic} alt="Analytics" className="icon" />

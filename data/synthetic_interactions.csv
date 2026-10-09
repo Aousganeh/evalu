@@ -1,0 +1,46 @@
+interaction_id,timestamp,channel,language,customer_id,text,status
+INT-1001,2026-10-01T09:14:00Z,Call Centre,az,CUST-9011,"Salam, bu gün balansdan səbəbsiz 8 AZN çıxıldı. Nömrəm +994 50 234 56 78, hesab kodum ACC-9011. Xahiş edirəm pulu qaytarın.",open
+INT-1002,2026-10-01T09:42:00Z,Chat,ru,CUST-9012,"Здравствуйте! С моей карты 4169-8201-9283-1102 списали 15 манат за интернет, хотя у меня активен безлимитный пакет. Мой номер +7 916 234 56 78.",open
+INT-1003,2026-10-01T10:15:00Z,CRM Ticket,en,CUST-9013,"I was charged $24 for unexpected background data roaming. My customer account is ACC-9013 and contact email is john.smith@company.com. Please refund.",open
+INT-1004,2026-10-01T11:05:00Z,Call Centre,az,CUST-9014,"Xırdalan ərazisində 4G internet çox zəif işləyir, sürət 1 Mbps-ə çatmır. Əlaqə üçün +994 55 412 88 90 nömrəsinə zəng edin.",open
+INT-1005,2026-10-01T11:30:00Z,Chat,ru,CUST-9015,"В районе метро Сахил постоянно пропадает 4G, страницы не открываются. Проверьте вышку связи, аккаунт CUST-9015.",open
+INT-1006,2026-10-01T12:00:00Z,CRM Ticket,en,CUST-9016,"Constant network timeouts and packet loss in downtown business district. Mobile connection keeps dropping. My email is alex.t@enterprise.org.",open
+INT-1007,2026-10-01T13:20:00Z,Call Centre,az,CUST-9017,"Yeni SIM karta keçəndən sonra bankdan təsdiq OTP SMS-ləri gəlmir. Şəxsi kabinet ID: 44102, telefon +994 70 890 12 34.",open
+INT-1008,2026-10-01T14:10:00Z,Chat,ru,CUST-9018,"После замены сим-карты не приходят смс с кодами авторизации от банка. Мой номер +7 925 889 01 23, аккаунт ACC-9018.",open
+INT-1009,2026-10-01T14:45:00Z,CRM Ticket,en,CUST-9019,"Unable to receive two-factor authentication OTP SMS after eSIM transfer. Phone is +1 415 555 0199, account ACC-9019.",open
+INT-1010,2026-10-01T15:30:00Z,Review,az,CUST-9020,"Mobil tətbiqə daxil olmaq olmur, barmaq izi ilə girişdə proqram çökür və bağlanır. Telefonum iPhone 14, istifadəçi email: leyla.a@box.az.",open
+INT-1011,2026-10-01T16:15:00Z,Chat,ru,CUST-9021,"После последнего обновления приложение вылетает при переходе в раздел оплаты. Карта 5425-1234-5678-9012. Почините!",open
+INT-1012,2026-10-01T16:50:00Z,Review,en,CUST-9022,"The mobile app keeps crashing immediately on the splash screen upon login. Cannot check bill balance. My email: mark.taylor@gmail.com.",open
+INT-1013,2026-10-02T09:00:00Z,Call Centre,az,CUST-9023,"Dünən zəng mərkəzindən Fuad bəy məsələmi 5 dəqiqəyə həll etdi. Əla və operativ xidmətə görə minnətdaram! Nömrəm +994 50 999 11 22.",resolved
+INT-1014,2026-10-02T09:30:00Z,Chat,ru,CUST-9024,"Оператор Анна очень вежливо и быстро помогла подключить правильный роуминг-тариф. Отличная поддержка клиентов, спасибо!",resolved
+INT-1015,2026-10-02T10:10:00Z,Review,en,CUST-9025,"Super quick and professional customer support from the call centre representative. Resolved my billing inquiry in minutes! Highly satisfied.",resolved
+INT-1016,2026-10-02T11:00:00Z,Call Centre,az,CUST-9026,"Gecə vaxtı telefonumdan 12 AZN data xərci tutulub, halbuki WiFi qoşulu idi. Hesab nömrəm ACC-9026, telefon +994 51 333 44 55.",open
+INT-1017,2026-10-02T11:45:00Z,Chat,ru,CUST-9027,"Почему с баланса повторно сняли деньги за подписку на интернет? Мой лицевой счет CUST-9027, телефон +7 903 555 01 92. Требую возврат.",open
+INT-1018,2026-10-02T12:20:00Z,CRM Ticket,en,CUST-9028,"Extra unexplainable data charges of $18 on my monthly telecom invoice. Card billed: 4000 1234 5678 9010. Account ACC-9028.",open
+INT-1019,2026-10-02T13:10:00Z,Call Centre,az,CUST-9029,"Sumqayıt yolunda şəbəkə tamamilə itir, zənglər qırılır və internet açılmır. Əlaqə: +994 50 777 66 55.",open
+INT-1020,2026-10-02T14:00:00Z,Chat,ru,CUST-9030,"Скорость домашнего 4G роутера упала до нуля, индикатор горит красным. Лицевой счет ACC-9030, адрес Баку, ул. Низами.",open
+INT-1021,2026-10-02T14:40:00Z,CRM Ticket,en,CUST-9031,"Severe 5G/LTE signal degradation in suburban area. Signal drops to 1 bar indoors. Account ACC-9031, contact: sarah.w@techcorp.com.",open
+INT-1022,2026-10-02T15:20:00Z,Call Centre,az,CUST-9032,"Bank kartımdan əməliyyat üçün tələb olunan təsdiq kodu (OTP) 30 dəqiqədir çatmır. Əlaqə: +994 55 222 33 44, müştəri ID: 55901.",open
+INT-1023,2026-10-02T16:00:00Z,Chat,ru,CUST-9033,"Не могу войти в онлайн-банк, потому что не приходят смс-коды на мой номер +7 915 444 33 22. Аккаунт CUST-9033.",open
+INT-1024,2026-10-02T16:30:00Z,CRM Ticket,en,CUST-9034,"SMS verification code for corporate portal failed to deliver multiple times to +1 202 555 0147. Account ACC-9034.",open
+INT-1025,2026-10-03T09:15:00Z,Review,az,CUST-9035,"Tətbiq yenilənəndən sonra şifrəni qəbul etmir və xəta kodu 500 verir. Email: rashad.k@inbox.az. Dərhal aradan qaldırın.",open
+INT-1026,2026-10-03T10:00:00Z,Chat,ru,CUST-9036,"Не работает авторизация через Face ID в мобильном приложении, черный экран при старте. Телефон +7 985 111 22 33.",open
+INT-1027,2026-10-03T10:45:00Z,Review,en,CUST-9037,"App login loop error. Whenever I enter valid credentials it redirects back to login page. Email: devon.b@example.net.",open
+INT-1028,2026-10-03T11:30:00Z,Call Centre,az,CUST-9038,"Dəstək xidmətindən Nərmin xanıma təşəkkürlər, rouminq problemini səbirlə izah edib aktivləşdirdi. Əla xidmət!",resolved
+INT-1029,2026-10-03T12:15:00Z,Chat,ru,CUST-9039,"Хочу поблагодарить службу поддержки за оперативную замену сим-карты без задержек. Все работает прекрасно!",resolved
+INT-1030,2026-10-03T13:00:00Z,Review,en,CUST-9040,"Outstanding technical support! The representative patiently walked me through the APN network reconfiguration. Kudos!",resolved
+INT-1031,2026-10-03T13:45:00Z,Call Centre,az,CUST-9041,"Xaricə getməmişdən əvvəl interneti bağlamışdım, amma 45 AZN rouminq borcu yazılıb. Kart: 4169 0012 3456 7890, nömrə +994 77 123 99 88. Düzəliş edin.",open
+INT-1032,2026-10-03T14:30:00Z,Chat,ru,CUST-9042,"Обнаружил непонятное списание 22 маната за платные услуги, которые я никогда не подключал. Номер +7 905 678 90 12, счет ACC-9042.",open
+INT-1033,2026-10-03T15:15:00Z,CRM Ticket,en,CUST-9043,"Unauthorized recurring subscription charge of $15 on invoice. Credit card: 5500-1122-3344-5566, account ACC-9043. Refund immediately.",open
+INT-1034,2026-10-03T16:00:00Z,Call Centre,az,CUST-9044,"Yasamal rayonunda axşam saatlarında internet kəsilir və modem qırmızı yanır. Şəxsi kabinet ACC-9044, əlaqə +994 50 312 45 67.",open
+INT-1035,2026-10-03T16:45:00Z,Chat,ru,CUST-9045,"Ужасная скорость 4G в центре города, видео грузится в 240p, невозможно работать удаленно. Аккаунт CUST-9045.",open
+INT-1036,2026-10-04T09:30:00Z,CRM Ticket,en,CUST-9046,"High ping of 450ms and recurring packet loss during remote video conference calls. Account ACC-9046, email: robert.p@global.com.",open
+INT-1037,2026-10-04T10:15:00Z,Call Centre,az,CUST-9047,"SIM kartım bloklandı və PUK kodunu daxil edəndə xəta verir. Nömrəm +994 55 600 70 80, şəxsiyyət vəsiqəsi FIN: 5A8B9C1.",open
+INT-1038,2026-10-04T11:00:00Z,Chat,ru,CUST-9048,"Не приходят коды двухфакторной аутентификации от Telegram и WhatsApp после поездки за границу. Номер +7 926 555 43 21.",open
+INT-1039,2026-10-04T11:45:00Z,CRM Ticket,en,CUST-9049,"SMS delivery gateway failure for incoming banking notifications. Phone: +1 312 555 0188, account ACC-9049.",open
+INT-1040,2026-10-04T12:30:00Z,Review,az,CUST-9050,"Tətbiqdə kartla balans artırmaq istəyirəm, amma hər dəfə server xətası göstərir. İstifadəçi email: elvin.m@code.az.",open
+INT-1041,2026-10-04T13:15:00Z,Chat,ru,CUST-9051,"При попытке привязать карту 4012-3456-7890-1234 в приложении выходит сообщение 'Внутренняя ошибка сервера'. Сделайте исправление.",open
+INT-1042,2026-10-04T14:00:00Z,Review,en,CUST-9052,"App payment gateway keeps freezing on authorization step. Card charged but balance not updated. Contact: lisa.ray@service.net.",open
+INT-1043,2026-10-04T14:45:00Z,Call Centre,az,CUST-9053,"Çox sağ olun, operator Rauf bəy zəng zamanı itmiş nömrəmi tez bərpa etdi və yeni SIM kart təqdim olundu. Əla!",resolved
+INT-1044,2026-10-04T15:30:00Z,Chat,ru,CUST-9054,"Отличная работа службы поддержки в чате! За 2 минуты переподключили пакет и вернули ошибочно списанный 1 манат.",resolved
+INT-1045,2026-10-04T16:15:00Z,CRM Ticket,en,CUST-9055,"Quick and seamless eSIM profile re-issuance handled by the telecom helpdesk. Excellent experience.",resolved

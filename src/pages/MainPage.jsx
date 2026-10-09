@@ -33,6 +33,8 @@ import ChartCardWrapper from '../components/common/ChartCardWrapper';
 import Sidebar from '../components/common/Sidebar';
 import { mockApi, mockAdditionalStats } from '../utils/data/mockData';
 import AIInsight from '../components/ai/AIInsight';
+import EvaluPipelinePage from './EvaluPipelinePage';
+
 
 
 // Optimized CSS animations with better performance
@@ -449,7 +451,7 @@ const DroppableRow = React.memo(({ rowIndex, children, isEmpty, isEditMode, card
 });
 
 const MainPage = () => {
-  const [currentPage, setCurrentPage] = useState('overview');
+  const [currentPage, setCurrentPage] = useState('pipeline');
   const [customerCount, setCustomerCount] = useState(0);
   const [reviewsCount, setReviewsCount] = useState(0);
   const [negativeReviewsCount, setNegativeReviewsCount] = useState(0);
@@ -1605,7 +1607,9 @@ const MainPage = () => {
             transition: 'margin-left 0.3s ease'
           }}
         >
-          {currentPage === 'overview' || currentPage === 'dashboard' ? (
+          {currentPage === 'pipeline' ? (
+            <EvaluPipelinePage onNavigate={setCurrentPage} />
+          ) : currentPage === 'overview' || currentPage === 'dashboard' ? (
             <>
 
               {/* Add Card Menu - Popup Modal */}

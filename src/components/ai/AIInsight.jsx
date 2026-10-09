@@ -7,7 +7,7 @@ const AIInsight = ({ insight, children, placement = 'bottom' }) => {
   const [isHovered, setIsHovered] = useState(false);
   const anchorRef = useRef(null);
   const [mounted, setMounted] = useState(false);
-  const insightId = insight?.id || `insight-${Math.random()}`;
+  const insightId = insight?.id || 'insight-default';
   const hoverTimeoutRef = useRef(null);
   const closeTimeoutRef = useRef(null);
   const isDraggingRef = useRef(false);

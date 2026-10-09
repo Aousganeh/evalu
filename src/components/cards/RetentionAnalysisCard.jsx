@@ -67,7 +67,6 @@ const RetentionAnalysisCard = () => {
       borderRadius: '20px',
       padding: '24px',
       border: 'none',
-      boxShadow: 'none',
       boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
       height: '100%',
       minHeight: '320px',

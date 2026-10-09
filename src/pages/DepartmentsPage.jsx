@@ -122,9 +122,9 @@ const dotStyle = {
             departmentStats[deptName].negativeReviews++;
           }
 
-          // Calculate solved reviews based on sentiment (positive reviews more likely to be solved)
-          const solvedProbability = review.sentiment === 3 ? 0.8 : review.sentiment === 1 ? 0.3 : 0.5;
-          if (Math.random() < solvedProbability) {
+          // Calculate solved reviews deterministically based on sentiment
+          const isSolved = review.sentiment === 3 ? (reviewIndex % 5 !== 0) : review.sentiment === 1 ? (reviewIndex % 3 === 0) : (reviewIndex % 2 === 0);
+          if (isSolved) {
             departmentStats[deptName].solvedReviews++;
           }
 
@@ -155,8 +155,8 @@ const dotStyle = {
             departmentStats[targetDept].negativeReviews++;
           }
 
-          const solvedProbability = review.sentiment === 3 ? 0.8 : review.sentiment === 1 ? 0.3 : 0.5;
-          if (Math.random() < solvedProbability) {
+          const isSolved = review.sentiment === 3 ? (reviewIndex % 5 !== 0) : review.sentiment === 1 ? (reviewIndex % 3 === 0) : (reviewIndex % 2 === 0);
+          if (isSolved) {
             departmentStats[targetDept].solvedReviews++;
           }
 
@@ -182,8 +182,8 @@ const dotStyle = {
           avgResolutionTime: "N/A"
         };
 
-        // Generate additional solved items (tickets, issues, etc.)
-        const totalTickets = stats.totalReviews + Math.floor(Math.random() * 20) + 5;
+        // Generate additional solved items deterministically
+        const totalTickets = stats.totalReviews + ((idx * 7) % 20) + 5;
         const solvedTickets = stats.solvedReviews + Math.floor(totalTickets * 0.7);
         const pendingTickets = totalTickets - solvedTickets;
         const openTickets = Math.floor(pendingTickets * 0.6);
@@ -203,9 +203,9 @@ const dotStyle = {
           topics: responsibilities.topics,
           avgResponseTime: responsibilities.avgResponseTime,
           avgResolutionTime: responsibilities.avgResolutionTime,
-          teamSize: Math.floor(Math.random() * 15) + 5,
-          trend: stats.totalReviews > 0 ? (Math.random() > 0.5 ? 'up' : 'down') : 'stable',
-          trendPercentage: stats.totalReviews > 0 ? Math.floor(Math.random() * 20) + 1 : 0,
+          teamSize: ((idx * 3) % 15) + 5,
+          trend: stats.totalReviews > 0 ? (idx % 2 === 0 ? 'up' : 'down') : 'stable',
+          trendPercentage: stats.totalReviews > 0 ? ((idx * 5) % 20) + 1 : 0,
           color: stats.color
         };
       });
