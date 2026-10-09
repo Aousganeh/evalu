@@ -169,30 +169,14 @@ const ReviewsPage = () => {
       touchEndY = 0;
     };
 
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // Only refresh when scrolling up to top, not when scrolling down
-      if (scrollTop === 0 && lastScrollTop > 0 && !loading && !isRefreshing) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          fetchReviews();
-        }, 300); // Small delay to prevent multiple refreshes
-      }
-      
-      lastScrollTop = scrollTop;
-    };
-
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
-      window.removeEventListener('scroll', handleScroll);
       if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, [loading, isRefreshing]);

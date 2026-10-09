@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import logo from '../assets/logosmall.svg';
+import logo from '../assets/logo.png';
 import notify from '../assets/notify.svg';
 import problem from '../assets/problem.svg';
 import customer from '../assets/customer.svg';
@@ -12,7 +12,7 @@ import { DndContext, closestCenter, closestCorners, PointerSensor, useSensor, us
 import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
-import { GripVertical, Edit3, Plus, X } from 'lucide-react';
+import { GripVertical, Edit3, Plus, X, Sparkles, Cpu, BarChart3, MessageSquare, Building2, Users, Bell } from 'lucide-react';
 import ReviewBox from '../components/reviews/ReviewBox';
 import PieChartBox from '../components/charts/PieChartBox';
 import DepartmentsPage from './DepartmentsPage';
@@ -34,6 +34,8 @@ import Sidebar from '../components/common/Sidebar';
 import { mockApi, mockAdditionalStats } from '../utils/data/mockData';
 import AIInsight from '../components/ai/AIInsight';
 import EvaluPipelinePage from './EvaluPipelinePage';
+import PitchDeckModal from '../components/common/PitchDeckModal';
+import NotificationsPopover from '../components/common/NotificationsPopover';
 
 
 
@@ -478,6 +480,8 @@ const MainPage = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [showAddMenu, setShowAddMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showPitchDeck, setShowPitchDeck] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   // Load sidebar collapsed state from localStorage
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
@@ -1481,15 +1485,105 @@ const MainPage = () => {
     <div className="dashboard" id="main-page">
 
       {/* Header */}
-      <header className="header">
-        <div className="header-left">
-          <div className="logo" onClick={isMobile ? toggleMobileMenu : undefined} style={{ cursor: isMobile ? 'pointer' : 'default' }}>
-            <img src={logo} alt="Logo" className="logo-img" />
-            <span className="logo-text">Evalu</span>
+      <header className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 24px' }}>
+        <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div className="logo" onClick={isMobile ? toggleMobileMenu : undefined} style={{ cursor: isMobile ? 'pointer' : 'default', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <img src={logo} alt="Logo" className="logo-img" style={{ height: '38px', width: 'auto' }} />
+            <span className="logo-text" style={{ fontSize: '24px', fontWeight: '800', letterSpacing: '-0.5px' }}>Evalu</span>
+            <span style={{
+              background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
+              color: '#4338CA',
+              fontSize: '11px',
+              fontWeight: '800',
+              padding: '3px 8px',
+              borderRadius: '6px',
+              border: '1px solid #C7D2FE',
+              letterSpacing: '0.4px',
+              textTransform: 'uppercase'
+            }}>AI Enterprise</span>
           </div>
+
+          {/* Top Quick Navigation Pills (Desktop) */}
+          {!isMobile && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: '#FFFFFF',
+              padding: '4px',
+              borderRadius: '12px',
+              border: '1px solid #E2E8F0',
+              marginLeft: '8px'
+            }}>
+              {[
+                { id: 'pipeline', label: 'AI Pipeline', icon: Cpu },
+                { id: 'overview', label: 'Analytics', icon: BarChart3 },
+                { id: 'reviews', label: 'Reviews', icon: MessageSquare },
+                { id: 'departments', label: 'Departments', icon: Building2 },
+                { id: 'users', label: 'Users', icon: Users }
+              ].map(item => {
+                const Icon = item.icon;
+                const isActive = (currentPage === item.id) || (item.id === 'overview' && currentPage === 'dashboard');
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setCurrentPage(item.id)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '6px 12px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      background: isActive ? '#2563EB' : 'transparent',
+                      color: isActive ? '#FFFFFF' : '#64748B',
+                      fontSize: '12px',
+                      fontWeight: isActive ? '700' : '500',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <Icon size={14} />
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
-        <div className="header-right">
+        <div className="header-right" style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
+          {/* Pitch Deck & Model Spec Button */}
+          <button
+            onClick={() => setShowPitchDeck(true)}
+            style={{
+              background: 'linear-gradient(135deg, #7C3AED 0%, #6366F1 100%)',
+              color: '#FFFFFF',
+              border: 'none',
+              borderRadius: '20px',
+              padding: '8px 16px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '12px',
+              fontWeight: '700',
+              boxShadow: '0 2px 8px rgba(124, 58, 237, 0.25)',
+              transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.boxShadow = '0 4px 14px rgba(124, 58, 237, 0.35)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(124, 58, 237, 0.25)';
+            }}
+          >
+            <Sparkles size={14} />
+            <span>Pitch Deck & Spec</span>
+          </button>
+
           {currentPage === 'overview' || currentPage === 'dashboard' ? (
             <>
               {isEditMode && (
@@ -1501,27 +1595,16 @@ const MainPage = () => {
                     color: '#374151',
                     border: '1px solid #dcdcdc',
                     borderRadius: '20px',
-                    padding: '12px 20px',
+                    padding: '8px 14px',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    fontWeight: '500',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#e9ecef';
-                    e.currentTarget.style.transform = 'translateY(-1px)';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#f8f9fa';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+                    gap: '6px',
+                    fontSize: '12px',
+                    fontWeight: '600'
                   }}
                 >
-                  <Plus size={16} />
+                  <Plus size={14} />
                   {showAddMenu ? 'Close' : 'Add Card'}
                 </button>
               )}
@@ -1529,36 +1612,97 @@ const MainPage = () => {
                 onClick={toggleEditMode}
                 className="edit-button"
                 style={{
-                  background: '#f8f9fa',
-                  color: '#374151',
+                  background: isEditMode ? '#2563EB' : '#f8f9fa',
+                  color: isEditMode ? '#FFFFFF' : '#374151',
                   border: '1px solid #dcdcdc',
                   borderRadius: '20px',
-                  padding: '12px 20px',
+                  padding: '8px 14px',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  fontWeight: '500',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                  transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#e9ecef';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#f8f9fa';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+                  gap: '6px',
+                  fontSize: '12px',
+                  fontWeight: '600'
                 }}
               >
-                <Edit3 size={16} />
-                {isEditMode ? 'Done' : 'Edit'}
+                <Edit3 size={14} />
+                {isEditMode ? 'Done' : 'Customize'}
               </button>
             </>
           ) : null}
-          <img src={notify} alt="Notification" className="icon" />
+
+          {/* Interactive Notifications Button */}
+          <div style={{ position: 'relative' }}>
+            <button
+              onClick={() => setShowNotifications(prev => !prev)}
+              style={{
+                background: '#FFFFFF',
+                border: '1px solid #E2E8F0',
+                borderRadius: '50%',
+                width: '36px',
+                height: '36px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                position: 'relative',
+                transition: 'all 0.2s'
+              }}
+              aria-label="Notifications"
+            >
+              <Bell size={17} color="#475569" />
+              <span style={{
+                position: 'absolute',
+                top: '-2px',
+                right: '-2px',
+                background: '#EF4444',
+                color: '#FFFFFF',
+                fontSize: '10px',
+                fontWeight: '800',
+                borderRadius: '50%',
+                width: '16px',
+                height: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '2px solid #FFFFFF'
+              }}>2</span>
+            </button>
+
+            <NotificationsPopover
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
+              onNavigate={setCurrentPage}
+            />
+          </div>
+
+          {/* Enterprise User Badge */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '4px 10px 4px 6px',
+            background: '#FFFFFF',
+            border: '1px solid #E2E8F0',
+            borderRadius: '20px'
+          }}>
+            <div style={{
+              width: '24px',
+              height: '24px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+              color: '#FFFFFF',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '10px',
+              fontWeight: '800'
+            }}>AZ</div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: '11px', fontWeight: '700', color: '#0F172A', lineHeight: '1.2' }}>Azercell Enterprise</span>
+              <span style={{ fontSize: '9px', color: '#10B981', fontWeight: '600', lineHeight: '1' }}>● Live Session</span>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -2253,6 +2397,12 @@ const MainPage = () => {
       )}
         </div>
       </div>
+
+      {/* Pitch Deck & Model Specification Modal */}
+      <PitchDeckModal
+        isOpen={showPitchDeck}
+        onClose={() => setShowPitchDeck(false)}
+      />
     </div>
   );
 };

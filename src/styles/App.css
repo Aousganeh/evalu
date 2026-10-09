@@ -83,8 +83,9 @@ body {
 }
 
 .logo-img {
-  height: 30px;
-  width: 30px;
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-text {
@@ -1035,3 +1036,40 @@ aside.sidebar.collapsed,
   margin: 0 auto !important;
   padding: 0 !important;
 }
+
+/* Custom Modern Minimal Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Glassmorphism Accents & Smooth Focus */
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #3B82F6 !important;
+  outline-offset: 1px !important;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
