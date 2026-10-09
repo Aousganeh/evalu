@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:latest
+    container_name: evaludb
+    restart: always
+    ports:
+      - "1521:1521" 
+      - "5500:5500" 
+    environment:
+      ORACLE_PASSWORD: "password"
+      ORACLE_DATABASE: "PDB1" 
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+volumes:
+  oracle_data:
+    driver: local

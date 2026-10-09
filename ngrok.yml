@@ -1,0 +1,15 @@
+version: 3
+
+agent:
+  authtoken: 2uOmkJg7HPDVlLXyVH1RvnRBXOU_3epCi7z4zVcfGxjU8KHz8
+
+tunnels:
+  backend:
+    proto: http
+    addr: 5232
+    domain: assured-goshawk-topical.ngrok-free.app
+
+  frontend:
+    proto: http
+    addr: 5173
+
